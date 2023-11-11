@@ -17,7 +17,7 @@
  *  permissions and limitations under the License.
  */
 
-package io.temporal.exercise2.workflowtaskfretry.workflow;
+package io.temporal.exercise2.workflowtaskretry.workflow;
 
 import io.temporal.activity.ActivityOptions;
 import io.temporal.model.TransferRequest;

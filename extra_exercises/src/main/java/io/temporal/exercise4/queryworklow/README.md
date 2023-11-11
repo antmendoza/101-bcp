@@ -27,5 +27,5 @@ final MoneyTransferWorkflow workflowStub =
 System.out.println("queryStatus result: " + workflowStub.queryStatus());
 ```
 
-### [Code sample](https://github.com/temporalio/samples-java/blob/main/src/main/java/io/temporal/samples/hello/HelloQuery.java) 
+### [Code sample](https://github.com/temporalio/samples-java/blob/main/core/src/main/java/io/temporal/samples/hello/HelloQuery.java) 
 

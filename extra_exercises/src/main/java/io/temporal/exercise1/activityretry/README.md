@@ -25,6 +25,6 @@ forth attend.
 ### run WorkerProcess.java (worker executes our code)
 
 The activity will fail four times, after forth attend will success. 
-This is the default behavior of activity execution, you can configure the retry policy setting activity options.
+By default, activity execution will retry until it eventually success. You can customize this behaviour.
 
 

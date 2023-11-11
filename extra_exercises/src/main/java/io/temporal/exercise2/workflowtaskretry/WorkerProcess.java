@@ -17,10 +17,10 @@
  *  permissions and limitations under the License.
  */
 
-package io.temporal.exercise2.workflowtaskfretry;
+package io.temporal.exercise2.workflowtaskretry;
 
 import io.temporal.client.WorkflowClient;
-import io.temporal.exercise2.workflowtaskfretry.workflow.MoneyTransferWorkflowImpl;
+import io.temporal.exercise2.workflowtaskretry.workflow.MoneyTransferWorkflowImpl;
 import io.temporal.service.AccountServiceImpl;
 import io.temporal.service.BankingClient;
 import io.temporal.serviceclient.WorkflowServiceStubs;
