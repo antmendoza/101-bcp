@@ -17,7 +17,7 @@
  *  permissions and limitations under the License.
  */
 
-package io.temporal.exercise3.signalworkflow.solution.workflow;
+package io.temporal.exercise3.signalworkflow.solution2.workflow;
 
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
@@ -27,8 +27,8 @@ import io.temporal.api.enums.v1.WorkflowExecutionStatus;
 import io.temporal.api.workflowservice.v1.DescribeWorkflowExecutionResponse;
 import io.temporal.client.WorkflowClient;
 import io.temporal.client.WorkflowOptions;
-import io.temporal.exercise3.signalworkflow.solution.workflow.activity.NotificationService;
-import io.temporal.exercise3.signalworkflow.solution.workflow.activity.NotificationServiceImpl;
+import io.temporal.exercise3.signalworkflow.solution2.workflow.activity.NotificationService;
+import io.temporal.exercise3.signalworkflow.solution2.workflow.activity.NotificationServiceImpl;
 import io.temporal.model.TransferRequest;
 import io.temporal.service.AccountService;
 import io.temporal.service.AccountServiceImpl;

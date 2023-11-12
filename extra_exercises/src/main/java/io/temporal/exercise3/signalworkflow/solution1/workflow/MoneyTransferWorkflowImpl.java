@@ -17,10 +17,9 @@
  *  permissions and limitations under the License.
  */
 
-package io.temporal.exercise3.signalworkflow.solution.workflow;
+package io.temporal.exercise3.signalworkflow.solution1.workflow;
 
 import io.temporal.activity.ActivityOptions;
-import io.temporal.exercise3.signalworkflow.solution.workflow.activity.NotificationService;
 import io.temporal.model.TransferRequest;
 import io.temporal.service.AccountService;
 import io.temporal.service.DepositRequest;
@@ -36,10 +35,6 @@ public class MoneyTransferWorkflowImpl implements MoneyTransferWorkflow {
           AccountService.class,
           ActivityOptions.newBuilder().setStartToCloseTimeout(Duration.ofSeconds(3)).build());
 
-  private final NotificationService notificationService =
-      Workflow.newActivityStub(
-          NotificationService.class,
-          ActivityOptions.newBuilder().setStartToCloseTimeout(Duration.ofSeconds(3)).build());
   private final Logger log = Workflow.getLogger(MoneyTransferWorkflowImpl.class.getSimpleName());
   private TRANSFER_APPROVED transferApproved;
 
@@ -68,8 +63,6 @@ public class MoneyTransferWorkflowImpl implements MoneyTransferWorkflow {
       log.info("transferApproved: " + transferApproved);
 
       if (TRANSFER_APPROVED.NO.equals(transferApproved)) {
-        // notify customer...
-        notificationService.notifyCustomerTransferNotApproved();
         log.info("notify customer, transferApproved: " + transferRequest);
         return;
       }
@@ -85,8 +78,6 @@ public class MoneyTransferWorkflowImpl implements MoneyTransferWorkflow {
             transferRequest.toAccountId(),
             transferRequest.referenceId(),
             transferRequest.amount()));
-
-    notificationService.notifyCustomerTransferDone();
 
     log.info("End transfer: " + transferRequest);
   }

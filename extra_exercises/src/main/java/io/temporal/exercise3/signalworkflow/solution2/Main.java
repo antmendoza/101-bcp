@@ -1,6 +1,6 @@
-package io.temporal.exercise3.signalworkflow.solution;
+package io.temporal.exercise3.signalworkflow.solution2;
 
-import io.temporal.exercise3.signalworkflow.solution.workflow.TRANSFER_APPROVED;
+import io.temporal.exercise3.signalworkflow.solution2.workflow.TRANSFER_APPROVED;
 import java.util.concurrent.CompletableFuture;
 
 public class Main {

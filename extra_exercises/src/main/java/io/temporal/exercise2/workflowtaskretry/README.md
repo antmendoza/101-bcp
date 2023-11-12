@@ -1,25 +1,40 @@
-# Workflow task  failure
+# Workflow task failure
 
-This example demostrate the workflow task will retry in presence of errors. 
-The workflow code throws runtime error, once we fix the code and redeploy the worker, the worker will continue the workflow execution.
+This example demostrate that, for Temporal, exceptions thrown in workflow code are intermmitent, and will retry in presence of these errors.
 
-### Make sure Temporal Server is running locally
+The code is written to throw an error on porpouse. Once the code is fixed the workflow execution will continue from where it left off 
+
+## Running the code
+
+### Start Temporal Cluster locally
 - https://docs.temporal.io/application-development/foundations#run-a-development-server
 
-### run Starter.java (send request/start workflow)
-### run WorkerProcess.java (worker executes our code)
 
-Note runtime exceptions in console. (The worker send WorkflowTaskFailed to the server and the server re-schedule the task,
-until it eventually success)
+### Start Starter.java
+This program send a request to the server to schedule the workflow execution
 
-### Fix the code 
-- Open, MoneyTransferWorkflowImpl.java,
+### Start WorkerProcess.java
+This program, worker, start listening in a specific taskqueue and accepting task from the server.
+
+
+### Expected output
+The worker will start running the workflow code, and at some point it will throw a runtime exceptions. 
+
+
+## Exercise
+Fixing the code will unblock the workflow and the execution will continue as if nothing had happened
+
+
+#### Fix the code 
+- Open [MoneyTransferWorkflowImpl.java](./workflow/MoneyTransferWorkflowImpl.java) 
 - Fix the code
 - Stop the worker
 - Start the worker (redeploy your code)
 
-The workflow execution will continue as if nothing has happened. Note that the 
-method `accountService.withdraw` won’t be executed again.
+
+### Expected output
+After some time, the worker will start procesing the code again and will complete the execution.
+Note that the activity `withdraw` won’t be executed again.
 
 
 

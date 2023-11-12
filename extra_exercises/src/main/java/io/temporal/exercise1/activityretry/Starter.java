@@ -40,7 +40,6 @@ public class Starter {
         WorkflowOptions.newBuilder()
             .setWorkflowId(MY_BUSINESS_ID)
             .setTaskQueue(WorkerProcess.TASK_QUEUE) // mandatory
-            // .setWorkflowRunTimeout(Duration.ofDays(2))
             .build();
 
     // Create the workflow client stub.

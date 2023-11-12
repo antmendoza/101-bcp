@@ -5,6 +5,8 @@ This example demostrate how Temporal retry activity execution in presence of err
 The activity code contains logic to simulate 4 consecutive failures and will success after the 
 forth attend.
 
+See activity implementation [AccountServiceImplRetry.java](./workflow/AccountServiceImplRetry.java)
+
 ```
   private void simulateServiceIsDownAndSuccessAfterNumIteractions(int numIterationsBeforeSuccess) {
 
@@ -17,14 +19,19 @@ forth attend.
 
 ```
 
-### Make sure Temporal Server is running locally 
+## Running the code
+
+### Start Temporal Cluster locally 
 - https://docs.temporal.io/application-development/foundations#run-a-development-server
 
 
-### run Starter.java (send request/start workflow)
-### run WorkerProcess.java (worker executes our code)
+### Start Starter.java
+This program send a request to the server to schedule the workflow execution
 
-The activity will fail four times, after forth attend will success. 
-By default, activity execution will retry until it eventually success. You can customize this behaviour.
+### Start WorkerProcess.java
+This program, worker, start listening in a specific taskqueue and accepting task from the server.
 
+
+### Expected output
+The activity will fail four times, and will success after the forth attend.
 

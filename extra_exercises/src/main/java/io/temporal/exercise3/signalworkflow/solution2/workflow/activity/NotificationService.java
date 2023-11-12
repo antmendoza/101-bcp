@@ -1,4 +1,4 @@
-package io.temporal.exercise3.signalworkflow.solution.workflow.activity;
+package io.temporal.exercise3.signalworkflow.solution2.workflow.activity;
 
 import io.temporal.activity.ActivityInterface;
 import io.temporal.activity.ActivityMethod;

@@ -21,7 +21,7 @@ package io.temporal.exercise5.timer.solution;
 
 import io.temporal.client.WorkflowClient;
 import io.temporal.client.WorkflowOptions;
-import io.temporal.exercise3.signalworkflow.solution.workflow.MoneyTransferWorkflow;
+import io.temporal.exercise3.signalworkflow.solution1.workflow.MoneyTransferWorkflow;
 import io.temporal.model.TransferRequest;
 import io.temporal.serviceclient.WorkflowServiceStubs;
 

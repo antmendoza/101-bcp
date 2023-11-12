@@ -17,11 +17,11 @@
  *  permissions and limitations under the License.
  */
 
-package io.temporal.exercise3.signalworkflow.solution;
+package io.temporal.exercise3.signalworkflow.solution2;
 
 import io.temporal.client.WorkflowClient;
-import io.temporal.exercise3.signalworkflow.solution.workflow.MoneyTransferWorkflowImpl;
-import io.temporal.exercise3.signalworkflow.solution.workflow.activity.NotificationServiceImpl;
+import io.temporal.exercise3.signalworkflow.solution2.workflow.MoneyTransferWorkflowImpl;
+import io.temporal.exercise3.signalworkflow.solution2.workflow.activity.NotificationServiceImpl;
 import io.temporal.service.AccountServiceImpl;
 import io.temporal.service.BankingClient;
 import io.temporal.serviceclient.WorkflowServiceStubs;

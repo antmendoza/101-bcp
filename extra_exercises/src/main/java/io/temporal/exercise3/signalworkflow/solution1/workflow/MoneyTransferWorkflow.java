@@ -17,7 +17,7 @@
  *  permissions and limitations under the License.
  */
 
-package io.temporal.exercise3.signalworkflow.solution.workflow;
+package io.temporal.exercise3.signalworkflow.solution1.workflow;
 
 import io.temporal.model.TransferRequest;
 import io.temporal.workflow.SignalMethod;
