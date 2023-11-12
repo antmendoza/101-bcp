@@ -9,17 +9,17 @@ The workflow code throws runtime error, once we fix the code and redeploy the wo
 ### run Starter.java (send request/start workflow)
 ### run WorkerProcess.java (worker executes our code)
 
-note runtime exceptions in console. 
-The worker send WorkflowTaskFailed to the server and the server re-schedule
-the workflow task (the worker keep retrying the task)
+Note runtime exceptions in console. (The worker send WorkflowTaskFailed to the server and the server re-schedule the task,
+until it eventually success)
 
-### open, MoneyTransferWorkflowImpl.java,
-- fix the code
-- stop the worker
-- start the worker / redeploy your code 
+### Fix the code 
+- Open, MoneyTransferWorkflowImpl.java,
+- Fix the code
+- Stop the worker
+- Start the worker (redeploy your code)
 
-The workflow execution will continue as is nothing has happened 
-(the method `accountService.withdraw` won’t be executed again)
+The workflow execution will continue as if nothing has happened. Note that the 
+method `accountService.withdraw` won’t be executed again.
 
 
 

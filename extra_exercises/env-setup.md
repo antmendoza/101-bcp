@@ -24,7 +24,3 @@ docker compose up
 - UI: http://localhost:8080
 
 
-## Workshop repo 
-
-`git clone https://github.com/antmendoza/temporal_java_workshop`
-
