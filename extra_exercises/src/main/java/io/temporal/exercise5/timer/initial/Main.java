@@ -1,9 +1,7 @@
 package io.temporal.exercise5.timer.initial;
 
-
 import io.temporal.exercise5.timer.solution.Starter;
 import io.temporal.exercise5.timer.solution.WorkerProcess;
-
 import java.util.concurrent.CompletableFuture;
 
 public class Main {

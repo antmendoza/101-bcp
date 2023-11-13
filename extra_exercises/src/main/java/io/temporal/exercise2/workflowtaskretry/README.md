@@ -12,9 +12,11 @@ The code is written to throw an error on porpouse. Once the code is fixed the wo
 
 ### Start Starter.java
 This program send a request to the server to schedule the workflow execution
+`./mvnw compile exec:java -Dexec.mainClass="io.temporal.exercise2.activityretry.Starter"`
 
 ### Start WorkerProcess.java
 This program, worker, start listening in a specific taskqueue and accepting task from the server.
+`./mvnw compile exec:java -Dexec.mainClass="io.temporal.exercise2.activityretry.WorkerProcess"`
 
 
 ### Expected output

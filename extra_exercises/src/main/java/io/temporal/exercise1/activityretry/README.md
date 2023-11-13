@@ -27,9 +27,11 @@ See activity implementation [AccountServiceImplRetry.java](./workflow/AccountSer
 
 ### Start Starter.java
 This program send a request to the server to schedule the workflow execution
+`./mvnw compile exec:java -Dexec.mainClass="io.temporal.exercise1.activityretry.Starter"`
 
 ### Start WorkerProcess.java
 This program, worker, start listening in a specific taskqueue and accepting task from the server.
+`./mvnw compile exec:java -Dexec.mainClass="io.temporal.exercise1.activityretry.WorkerProcess"`
 
 
 ### Expected output

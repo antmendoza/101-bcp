@@ -1,6 +1,5 @@
 package io.temporal.exercise5.timer.solution;
 
-
 import java.util.concurrent.CompletableFuture;
 
 public class Main {
@@ -19,10 +18,7 @@ public class Main {
           Starter.main(args);
         });
 
-
     waitMillis(4000);
-
-
 
     System.exit(0);
   }
