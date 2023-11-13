@@ -5,7 +5,6 @@ We can add queries to our workflows to retreive internal state.
 
 ## Exercise: 
 
-
 Modify the code in [MoneyTransferWorkflowImpl](./initial/workflow/MoneyTransferWorkflowImpl.java) to expose a way to retrieve
 transfer status 
 
@@ -17,6 +16,7 @@ add a query that return the transfer status
 - add a query handler (new method) to your workflow (`@WorkflowQuery`) that returns the status. 
 - you can store transfer status in a workflow variable, and modify the value as the workflow is making progress. 
 
+E.g:
     ```
         transferStatus = TRANSFER_STATUS.INITIATED;
     ```

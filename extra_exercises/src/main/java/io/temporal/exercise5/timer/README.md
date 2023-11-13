@@ -1,14 +1,27 @@
-# Workflow Timer
+# Workflow sleep
 
-Temporal provide an easy way to create timers and react once those are triggered 
-
+A Workflow can set a durable timer for a fixed time period. This example demostrate the use of `Workflow.sleep()`.
 
 ## Exercise: 
 
-Modify the code in `io.temporal.exercise5.timer.initial` to sleep the workflow code for 2 minutes between withdraw and deposit methods.
+Modify the code in [MoneyTransferWorkflowImpl](./initial/workflow/MoneyTransferWorkflowImpl.java) and add a sleep for 
+30 seconds in between activity invocations.
+
+### Steps:
+- change the workflow code in [MoneyTransferWorkflowImpl](./initial/workflow/MoneyTransferWorkflowImpl.java) and add 
+a `Workflow.sleep()` for 30 seconds in between activity invocations.
+
+### Resources:
+- 
+- [Timer](https://docs.temporal.io/application-development/features?lang=java#timers)
+
+### Solution in package `solution`
 
 
-## Resources:
+## Expected output:
 
-### [Timer](https://docs.temporal.io/application-development/features?lang=java#timers)
+Temporal will add two new events to the workflow history in between activity invocations: TimerStarted and TimerFired.
+TimerFired occurs 30 seconds after the timer is started. 
+
+
 
