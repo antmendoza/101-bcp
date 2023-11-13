@@ -44,7 +44,11 @@ workflow code to invoke the new methods
 
 ### Resources
 
-- //TODO add activity
-
+- [What is an acticity](https://docs.temporal.io/activities)
+- [Activity implementation](https://learn.temporal.io/getting_started/java/hello_world_in_java/#create-an-activity)
+- Code sample: 
+  - https://github.com/temporalio/samples-java/blob/main/core/src/main/java/io/temporal/samples/hello/HelloActivity.java
+  - https://github.com/temporalio/samples-java/blob/main/core/src/main/java/io/temporal/samples/hello/HelloActivityRetry.java
+  - https://github.com/temporalio/samples-java/blob/main/core/src/main/java/io/temporal/samples/hello/HelloParallelActivity.java
 
 ### Solution in package `solution2`:
