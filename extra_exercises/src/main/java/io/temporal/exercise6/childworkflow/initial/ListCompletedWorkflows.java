@@ -2,12 +2,15 @@ package io.temporal.exercise6.childworkflow.initial;
 
 import io.temporal.api.workflowservice.v1.ListWorkflowExecutionsRequest;
 import io.temporal.serviceclient.WorkflowServiceStubs;
+import io.temporal.serviceclient.WorkflowServiceStubsOptions;
 
 public class ListCompletedWorkflows {
 
   public static void main(String[] args) {
 
-    final WorkflowServiceStubs service = WorkflowServiceStubs.newLocalServiceStubs();
+    final WorkflowServiceStubs service = WorkflowServiceStubs.newServiceStubs(io.temporal.serviceclient.WorkflowServiceStubsOptions.newBuilder()
+        .setTarget("127.0.0.1:7233") // Default values, can be omitted
+        .build());
 
     while (true) {
 

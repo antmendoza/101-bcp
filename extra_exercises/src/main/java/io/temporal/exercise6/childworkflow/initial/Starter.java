@@ -20,11 +20,14 @@
 package io.temporal.exercise6.childworkflow.initial;
 
 import io.temporal.client.WorkflowClient;
+import io.temporal.client.WorkflowClientOptions;
 import io.temporal.client.WorkflowOptions;
 import io.temporal.exercise6.childworkflow.initial.workflow.MoneyTransferWorkflow;
 import io.temporal.model.TransferRequest;
 import io.temporal.model.TransferRequests;
 import io.temporal.serviceclient.WorkflowServiceStubs;
+import io.temporal.serviceclient.WorkflowServiceStubsOptions;
+
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -42,9 +45,13 @@ public class Starter {
   public static void startTransfer(int numRequest) {
 
     // Get a Workflow service stub.
-    final WorkflowServiceStubs service = WorkflowServiceStubs.newLocalServiceStubs();
+    final WorkflowServiceStubs service = WorkflowServiceStubs.newServiceStubs(io.temporal.serviceclient.WorkflowServiceStubsOptions.newBuilder()
+        .setTarget("127.0.0.1:7233") // Default values, can be omitted
+        .build());
 
-    final WorkflowClient client = WorkflowClient.newInstance(service);
+    final WorkflowClient client = WorkflowClient.newInstance(service, io.temporal.client.WorkflowClientOptions.newBuilder()
+        .setNamespace("default") //// Default value, can be omitted
+        .build());
 
     // Create the workflow client stub. It is used to start our workflow execution.
     final WorkflowOptions build =

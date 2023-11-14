@@ -20,10 +20,12 @@
 package io.temporal.exercise6.childworkflow.initial;
 
 import io.temporal.client.WorkflowClient;
+import io.temporal.client.WorkflowClientOptions;
 import io.temporal.exercise6.childworkflow.initial.workflow.MoneyTransferWorkflowImpl;
 import io.temporal.service.AccountServiceImpl;
 import io.temporal.service.BankingClient;
 import io.temporal.serviceclient.WorkflowServiceStubs;
+import io.temporal.serviceclient.WorkflowServiceStubsOptions;
 import io.temporal.worker.WorkerFactory;
 import io.temporal.worker.WorkerFactoryOptions;
 import io.temporal.worker.WorkerOptions;
@@ -35,12 +37,16 @@ public class WorkerProcess {
   public static void main(String[] args) {
 
     // Get a Workflow service stub.
-    final WorkflowServiceStubs service = WorkflowServiceStubs.newLocalServiceStubs();
+    final WorkflowServiceStubs service = WorkflowServiceStubs.newServiceStubs(io.temporal.serviceclient.WorkflowServiceStubsOptions.newBuilder()
+        .setTarget("127.0.0.1:7233") // Default values, can be omitted
+        .build());
 
     /*
      * Get a Workflow service client which can be used to start, Signal, and Query Workflow Executions.
      */
-    WorkflowClient client = WorkflowClient.newInstance(service);
+    WorkflowClient client = WorkflowClient.newInstance(service, io.temporal.client.WorkflowClientOptions.newBuilder()
+        .setNamespace("default") //// Default value, can be omitted
+        .build());
 
     /*
      * Define the workflow factory. It is used to create workflow workers for a specific task queue.

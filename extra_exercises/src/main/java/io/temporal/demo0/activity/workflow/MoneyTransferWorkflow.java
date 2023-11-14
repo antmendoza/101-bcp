@@ -17,7 +17,7 @@
  *  permissions and limitations under the License.
  */
 
-package io.temporal.exercise1.activityretry.workflow;
+package io.temporal.demo0.activity.workflow;
 
 import io.temporal.model.TransferRequest;
 import io.temporal.workflow.WorkflowInterface;

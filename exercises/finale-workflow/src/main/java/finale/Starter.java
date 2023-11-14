@@ -9,9 +9,13 @@ public class Starter {
 
     public static void main(String[] args) throws Exception {
 
-        WorkflowServiceStubs service = WorkflowServiceStubs.newLocalServiceStubs();
+        WorkflowServiceStubs service = WorkflowServiceStubs.newServiceStubs(io.temporal.serviceclient.WorkflowServiceStubsOptions.newBuilder()
+        .setTarget("127.0.0.1:7233") // Default values, can be omitted
+        .build());
 
-        WorkflowClient client = WorkflowClient.newInstance(service);
+        WorkflowClient client = WorkflowClient.newInstance(service, io.temporal.client.WorkflowClientOptions.newBuilder()
+        .setNamespace("default") //// Default value, can be omitted
+        .build());
 
         WorkflowOptions options = WorkflowOptions.newBuilder()
                 .setWorkflowId("generate-certificate-workflow")

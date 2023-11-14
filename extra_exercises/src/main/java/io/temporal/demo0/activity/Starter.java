@@ -17,11 +17,11 @@
  *  permissions and limitations under the License.
  */
 
-package io.temporal.exercise1.activityretry;
+package io.temporal.demo0.activity;
 
+import io.temporal.demo0.activity.workflow.MoneyTransferWorkflow;
 import io.temporal.client.WorkflowClient;
 import io.temporal.client.WorkflowOptions;
-import io.temporal.exercise1.activityretry.workflow.MoneyTransferWorkflow;
 import io.temporal.model.TransferRequest;
 import io.temporal.serviceclient.WorkflowServiceStubs;
 
@@ -32,9 +32,13 @@ public class Starter {
   public static void main(String[] args) {
 
     // Get a Workflow service stub.
-    final WorkflowServiceStubs service = WorkflowServiceStubs.newLocalServiceStubs();
+    final WorkflowServiceStubs service = WorkflowServiceStubs.newServiceStubs(io.temporal.serviceclient.WorkflowServiceStubsOptions.newBuilder()
+        .setTarget("127.0.0.1:7233") // Default values, can be omitted
+        .build());
 
-    final WorkflowClient client = WorkflowClient.newInstance(service);
+    final WorkflowClient client = WorkflowClient.newInstance(service, io.temporal.client.WorkflowClientOptions.newBuilder()
+        .setNamespace("default") //// Default value, can be omitted
+        .build());
 
     final WorkflowOptions options =
         WorkflowOptions.newBuilder()

@@ -17,11 +17,11 @@
  *  permissions and limitations under the License.
  */
 
-package io.temporal.exercise1.activityretry;
+package io.temporal.demo0.activity;
 
 import io.temporal.client.WorkflowClient;
-import io.temporal.exercise1.activityretry.workflow.AccountServiceImplRetry;
-import io.temporal.exercise1.activityretry.workflow.MoneyTransferWorkflowImpl;
+import io.temporal.demo0.activity.workflow.MoneyTransferWorkflowImpl;
+import io.temporal.service.AccountServiceImpl;
 import io.temporal.service.BankingClient;
 import io.temporal.serviceclient.WorkflowServiceStubs;
 import io.temporal.worker.Worker;
@@ -36,12 +36,16 @@ public class WorkerProcess {
   public static void main(String[] args) {
 
     // Get a Workflow service stub.
-    final WorkflowServiceStubs service = WorkflowServiceStubs.newLocalServiceStubs();
+    final WorkflowServiceStubs service = WorkflowServiceStubs.newServiceStubs(io.temporal.serviceclient.WorkflowServiceStubsOptions.newBuilder()
+        .setTarget("127.0.0.1:7233") // Default values, can be omitted
+        .build());
 
     /*
      * Get a Workflow service client which can be used to start, Signal, and Query Workflow Executions.
      */
-    WorkflowClient client = WorkflowClient.newInstance(service);
+    WorkflowClient client = WorkflowClient.newInstance(service, io.temporal.client.WorkflowClientOptions.newBuilder()
+        .setNamespace("default") //// Default value, can be omitted
+        .build());
 
     /*
      * Define the workflow factory. It is used to create workflow workers for a specific task queue.
@@ -56,7 +60,7 @@ public class WorkerProcess {
     Worker worker = factory.newWorker(TASK_QUEUE, WorkerOptions.newBuilder().build());
 
     worker.registerWorkflowImplementationTypes(MoneyTransferWorkflowImpl.class);
-    worker.registerActivitiesImplementations(new AccountServiceImplRetry(new BankingClient()));
+    worker.registerActivitiesImplementations(new AccountServiceImpl(new BankingClient()));
 
     factory.start();
   }
